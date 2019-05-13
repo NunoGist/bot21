@@ -62,6 +62,7 @@ public class PlayerBot {
 
 			if (isPair()) {
 				pause();
+				continue;
 			}
 
 		}
