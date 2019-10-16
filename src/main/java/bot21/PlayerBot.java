@@ -17,6 +17,8 @@ public class PlayerBot {
 
 	private static DirtyWorker bot;
 
+	private static Scanner scanner = new Scanner(System.in);;
+
 	public static void main(String[] args) throws AWTException, InterruptedException {
 		/*
 		 * 
@@ -49,6 +51,21 @@ public class PlayerBot {
 		 * 
 		 */
 
+		/*
+		 * TODO: ligar o jogo, ver onde está o retangulo dos meus pontos
+		 * 
+		 * ha muitos momentos inesperados portanto: ~
+		 * 
+		 * - o isPair() tem de tentar umas vezes
+		 * 
+		 * - descobrir como vou ver se o botao "mesma aposta está up" e faze-lo sempre
+		 * que carrego em algo
+		 * 
+		 * 
+		 * 
+		 * 
+		 */
+
 		bot = new DirtyWorker();
 
 		TimeUnit.SECONDS.sleep(4);
@@ -61,7 +78,7 @@ public class PlayerBot {
 			TimeUnit.SECONDS.sleep(2);
 
 			if (isPair()) {
-				pause();
+				pauseFor(4);
 				continue;
 			}
 
@@ -73,10 +90,8 @@ public class PlayerBot {
 		bot.getScreenshot(x, y, width, height)
 	}
 
-	private static void pause() throws InterruptedException {
-		Scanner scanner = new Scanner(System.in);
+	private static void pauseFor(int seconds) throws InterruptedException {
 		scanner.nextLine();
-		scanner.close();
-		TimeUnit.SECONDS.sleep(4);
+		TimeUnit.SECONDS.sleep(seconds);
 	}
 }
